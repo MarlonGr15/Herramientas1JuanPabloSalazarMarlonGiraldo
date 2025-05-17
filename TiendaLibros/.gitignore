@@ -1,0 +1,33 @@
+# Archivos generados por Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de build
+bin/
+obj/
+
+# Archivos de paquetes
+packages/
+*.nupkg
+*.snupkg
+
+# Archivos de publicación
+publish/
+*.Publish.xml
+
+# Configuración de Rider y VSCode (opcional)
+.idea/
+.vscode/
+
+# Otros temporales
+*.log
+*.tmp
+*.bak
+
+# Archivos de base de datos local
+*.db
+*.mdf
+*.ldf
