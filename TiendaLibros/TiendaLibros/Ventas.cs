@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace TiendaLibros
 {
-    public partial class Consultas: Form
+    public partial class Ventas: Form
     {
-        public Consultas()
+        public Ventas()
         {
             InitializeComponent();
         }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }
