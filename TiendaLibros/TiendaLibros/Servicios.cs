@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TiendaLibros
 {
-    class Servicios
+    public class Servicios
     {
         private Tienda tienda;
 
@@ -18,17 +18,16 @@ namespace TiendaLibros
         internal Tienda Tienda { get => tienda; set => tienda = value; }
 
 
-        public void CrearLibro(Libro libro)
+        public string CrearLibro(Libro libro)
         {
             Libro existente = BuscarLibro(libro.Isbn);
             if(existente != null)
             {
-                Console.Write("ya existe el libro");
-                return;
+                return "ya existe el libro";
             }
 
             Tienda.Libros.Add(libro);
-            Console.Write("libro creado");
+            return "libro creado";
         }
 
         public void EliminarLibro(int isbn)
@@ -45,9 +44,14 @@ namespace TiendaLibros
         }
 
 
-        public void RegistrarVenta()
+        public string RegistrarTransaccion(Libro libro, string tipo, int cantidad)
         {
+            if (libro == null)
+                return "Libro inválido.";
 
+            Transaccion transaccion = new Transaccion(libro, tipo, DateTime.Now, cantidad);
+            this.Tienda.Transacciones.Add(transaccion);
+            return "Transacción registrada correctamente.";
         }
 
         public Libro BuscarLibro(int isbn)

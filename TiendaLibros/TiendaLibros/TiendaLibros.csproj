@@ -67,11 +67,11 @@
     <Compile Include="Servicios.cs" />
     <Compile Include="Tienda.cs" />
     <Compile Include="Transaccion.cs" />
-    <Compile Include="transacciones.cs">
+    <Compile Include="Transacciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="transacciones.Designer.cs">
-      <DependentUpon>transacciones.cs</DependentUpon>
+    <Compile Include="Transacciones.Designer.cs">
+      <DependentUpon>Transacciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas.cs">
       <SubType>Form</SubType>
@@ -95,8 +95,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="transacciones.resx">
-      <DependentUpon>transacciones.cs</DependentUpon>
+    <EmbeddedResource Include="Transacciones.resx">
+      <DependentUpon>Transacciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas.resx">
       <DependentUpon>Ventas.cs</DependentUpon>
