@@ -46,9 +46,10 @@ namespace TiendaLibros
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Inicio inicio = new Inicio();
+            Inicio inicio = new Inicio(this.servicio);
             this.Hide();
             inicio.Show();
+            
         }
     }
 }

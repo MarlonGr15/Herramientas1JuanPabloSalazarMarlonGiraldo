@@ -15,10 +15,10 @@ namespace TiendaLibros
 
         private Servicios servicio;
         private int indiceSeleccionado = -1;
-        public Inicio()
+        public Inicio(Servicios servicio)
         {
             InitializeComponent();
-            this.servicio = new Servicios(new Tienda(new List<Libro>(), new List<Transaccion>()));
+            this.servicio = servicio;
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -131,21 +131,37 @@ namespace TiendaLibros
         //metodo para abastecer libro
         private void label11_Click(object sender, EventArgs e)
         {
-            if (indiceSeleccionado >= 0)
+            if (string.IsNullOrWhiteSpace(Id.Text) ||
+            string.IsNullOrWhiteSpace(Titulo.Text) ||
+            string.IsNullOrWhiteSpace(PrecioC.Text) ||
+            string.IsNullOrWhiteSpace(PrecioV.Text) ||
+            string.IsNullOrWhiteSpace(Cantidad.Text))
             {
-                Libro libro = this.servicio.Tienda.Libros[indiceSeleccionado];
-                
-                if(int.Parse(Cantidad.Text) > libro.CantidadActual)
+                MessageBox.Show("Todos los campos son requeridos");
+                return;
+            }
+            try
+            {
+
+
+
+                if (indiceSeleccionado >= 0)
                 {
-                    int temporal = int.Parse(Cantidad.Text) - libro.CantidadActual;
-                    libro.CantidadActual = int.Parse(Cantidad.Text);
-                    this.servicio.RegistrarTransaccion(libro, "Abastecimiento", temporal);
-                }
-                else { MessageBox.Show("Solo se puede modificar la cantidad y debe ser mayor a la actual"); }
+                    Libro libro = this.servicio.Tienda.Libros[indiceSeleccionado];
+
+                    if (int.Parse(Cantidad.Text) > libro.CantidadActual)
+                    {
+                        int temporal = int.Parse(Cantidad.Text) - libro.CantidadActual;
+                        libro.CantidadActual = int.Parse(Cantidad.Text);
+                        this.servicio.RegistrarTransaccion(libro, "Abastecimiento", temporal);
+                    }
+                    else { MessageBox.Show("Solo se puede modificar la cantidad y debe ser mayor a la actual"); }
 
                     MostrarLibros();
-                LimpiarCampos();
+                    LimpiarCampos();
+                }
             }
+            catch(FormatException){ MessageBox.Show("Ingrese valores validos"); }
         }
 
         //metodo para la venta de libro
@@ -178,6 +194,11 @@ namespace TiendaLibros
             Transacciones ventanaTransacciones = new Transacciones(this.servicio);
             this.Hide();
             ventanaTransacciones.Show();
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            MostrarLibros();
         }
     }
 }

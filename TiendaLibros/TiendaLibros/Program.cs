@@ -16,7 +16,7 @@ namespace TiendaLibros
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            Application.Run(new Index());
         }
     }
 }
