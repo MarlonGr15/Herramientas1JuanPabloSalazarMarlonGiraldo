@@ -51,5 +51,12 @@ namespace TiendaLibros
             inicio.Show();
             
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Consultas consultas = new Consultas(this.servicio);
+            this.Hide();
+            consultas.Show();
+        }
     }
 }
